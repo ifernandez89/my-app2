@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Fragment } from "react";
+import './App.css';
+//import PrimerComponente from "./Components/PrimerComponente";
+//import Contador from "./Components/Contador";
+import DetalleProducto from "./Components/DetalleProducto";
+import Saludo from "./Components/Saludo";
+import Lista from "./Components/Lista";
+import ProductDetail from "./Components/ProductDetail";
+import Registro from "./Components/formulario";
+import Inicio from "./Components/Inicio";
+import FormularioHook from "./Components/FormularioHook";
+import Nosotros from "./Components/Nosotros";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  NavLink
+} from "react-router-dom";
+import TareasAbm from "./Components/tareas-abm";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  
+return (
+  
+<Router>
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+<div className="container">
+    <div className="btn-group">
+ <NavLink to="/" className="btn btn-dark">
+Inicio
+</NavLink>
+<NavLink to="/formulario" className="btn btn-dark">
+Formulario
+</NavLink>
+<NavLink to="/lista" className="btn btn-dark">
+Lista
+</NavLink>
+<NavLink to="/nosotros" className="btn btn-dark">
+Nosotros
+</NavLink>
+<NavLink to="/detalle" className="btn btn-dark">
+Detalle
+</NavLink>
+<NavLink to="/abm" className="btn btn-dark">
+Abm de Tareas
+</NavLink>
+</div>
+
+<Routes>
+<Route path="/" element={<Inicio/>}/>
+  <Route path="/formulario" element={<Registro/>}/>
+  <Route path="/lista" element={<Lista/>}/>
+  <Route path="/nosotros" element={<Nosotros/>}/>
+  <Route path="/detalle" element={<ProductDetail/>}/>
+  <Route path="/abm" element={<TareasAbm/>}/>
+</Routes>
+
+</div>
+</Router>
+  );
 }
 
-export default App
+export default App;
